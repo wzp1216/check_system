@@ -1,0 +1,641 @@
+"We are what we repeatedly do. Excellence, then, is not an act, but a habit." — Aristotle
+"The unexamined life is not worth living." — Socrates
+"Knowing yourself is the beginning of all wisdom." — Aristotle
+"He who has a why to live can bear almost any how." — Friedrich Nietzsche
+"The only way to do great work is to love what you do." — Steve Jobs
+"In the middle of difficulty lies opportunity." — Albert Einstein
+"It does not matter how slowly you go as long as you do not stop." — Confucius
+"Be the change that you wish to see in the world." — Mahatma Gandhi
+"知之者不如好之者，好之者不如乐之者。" — 孔子
+"吾生也有涯，而知也无涯。" — 庄子
+"非淡泊无以明志，非宁静无以致远。" — 诸葛亮
+"天行健，君子以自强不息。" — 《周易》
+"路漫漫其修远兮，吾将上下而求索。" — 屈原
+"行到水穷处，坐看云起时。" — 王维
+"不以物喜，不以己悲。" — 范仲淹
+"博学之，审问之，慎思之，明辨之，笃行之。" — 《中庸》
+"合抱之木，生于毫末；九层之台，起于累土。" — 老子
+"山重水复疑无路，柳暗花明又一村。" — 陆游
+"人生自古谁无死，留取丹心照汗青。" — 文天祥
+"读万卷书，行万里路。" — 董其昌
+"天下事有难易乎？为之，则难者亦易矣。" — 彭端淑
+"学而不思则罔，思而不学则殆。" — 孔子
+"Think deeply, speak gently, love much." — Unknown
+"The purpose of life is not to be happy. It is to be useful." — Ralph Waldo Emerson
+"Simplicity is the ultimate sophistication." — Leonardo da Vinci
+"The best time to plant a tree was 20 years ago. The second best time is now." — Chinese Proverb
+"温故而知新，可以为师矣。" — 孔子
+"三人行，必有我师焉。" — 孔子
+"己所不欲，勿施于人。" — 孔子
+"君子坦荡荡，小人长戚戚。" — 孔子
+"岁寒，然后知松柏之后凋也。" — 孔子
+"知之为知之，不知为不知，是知也。" — 孔子
+"朝闻道，夕死可矣。" — 孔子
+"君子欲讷于言而敏于行。" — 孔子
+"德不孤，必有邻。" — 孔子
+"见贤思齐焉，见不贤而内自省也。" — 孔子
+"上善若水，水善利万物而不争。" — 老子
+"知人者智，自知者明。" — 老子
+"胜人者有力，自胜者强。" — 老子
+"知足者富，强行者有志。" — 老子
+"大器晚成，大音希声，大象无形。" — 老子
+"千里之行，始于足下。" — 老子
+"为学日益，为道日损。" — 老子
+"信言不美，美言不信。" — 老子
+"天网恢恢，疏而不失。" — 老子
+"祸兮福之所倚，福兮祸之所伏。" — 老子
+"君子之交淡如水，小人之交甘若醴。" — 庄子
+"人生天地之间，若白驹之过隙，忽然而已。" — 庄子
+"井蛙不可以语于海者，拘于虚也。" — 庄子
+"哀莫大于心死，而人死亦次之。" — 庄子
+"大知闲闲，小知间间。" — 庄子
+"天地与我并生，而万物与我为一。" — 庄子
+"至人无己，神人无功，圣人无名。" — 庄子
+"相濡以沫，不如相忘于江湖。" — 庄子
+"子非鱼，安知鱼之乐。" — 庄子
+"穷则独善其身，达则兼济天下。" — 孟子
+"生于忧患，死于安乐。" — 孟子
+"天将降大任于斯人也，必先苦其心志，劳其筋骨。" — 孟子
+"鱼，我所欲也；熊掌，亦我所欲也。二者不可得兼。" — 孟子
+"爱人者，人恒爱之；敬人者，人恒敬之。" — 孟子
+"富贵不能淫，贫贱不能移，威武不能屈。" — 孟子
+"尽信书，则不如无书。" — 孟子
+"老吾老以及人之老，幼吾幼以及人之幼。" — 孟子
+"人有不为也，而后可以有为。" — 孟子
+"不积跬步，无以至千里；不积小流，无以成江海。" — 荀子
+"青，取之于蓝而青于蓝；冰，水为之而寒于水。" — 荀子
+"锲而不舍，金石可镂。" — 荀子
+"水能载舟，亦能覆舟。" — 荀子
+"赠人以言，重于金石珠玉。" — 荀子
+"与人善言，暖于布帛；伤人以言，深于矛戟。" — 荀子
+"知之而不行，虽敦必困。" — 荀子
+"君子生非异也，善假于物也。" — 荀子
+"静以修身，俭以养德。" — 诸葛亮
+"志当存高远。" — 诸葛亮
+"鞠躬尽瘁，死而后已。" — 诸葛亮
+"夫学须静也，才须学也。" — 诸葛亮
+"非学无以广才，非志无以成学。" — 诸葛亮
+"采菊东篱下，悠然见南山。" — 陶渊明
+"盛年不重来，一日难再晨。及时当勉励，岁月不待人。" — 陶渊明
+"悟已往之不谏，知来者之可追。" — 陶渊明
+"不戚戚于贫贱，不汲汲于富贵。" — 陶渊明
+"海内存知己，天涯若比邻。" — 王勃
+"落霞与孤鹜齐飞，秋水共长天一色。" — 王勃
+"老当益壮，宁移白首之心；穷且益坚，不坠青云之志。" — 王勃
+"天生我材必有用，千金散尽还复来。" — 李白
+"长风破浪会有时，直挂云帆济沧海。" — 李白
+"抽刀断水水更流，举杯消愁愁更愁。" — 李白
+"安能摧眉折腰事权贵，使我不得开心颜。" — 李白
+"大鹏一日同风起，扶摇直上九万里。" — 李白
+"读书破万卷，下笔如有神。" — 杜甫
+"会当凌绝顶，一览众山小。" — 杜甫
+"安得广厦千万间，大庇天下寒士俱欢颜。" — 杜甫
+"尔曹身与名俱灭，不废江河万古流。" — 杜甫
+"文章千古事，得失寸心知。" — 杜甫
+"业精于勤，荒于嬉；行成于思，毁于随。" — 韩愈
+"世有伯乐，然后有千里马。" — 韩愈
+"师者，所以传道授业解惑也。" — 韩愈
+"书山有路勤为径，学海无涯苦作舟。" — 韩愈
+"沉舟侧畔千帆过，病树前头万木春。" — 刘禹锡
+"山不在高，有仙则名。水不在深，有龙则灵。" — 刘禹锡
+"莫道桑榆晚，为霞尚满天。" — 刘禹锡
+"千淘万漉虽辛苦，吹尽狂沙始到金。" — 刘禹锡
+"野火烧不尽，春风吹又生。" — 白居易
+"同是天涯沦落人，相逢何必曾相识。" — 白居易
+"试玉要烧三日满，辨材须待七年期。" — 白居易
+"醉卧沙场君莫笑，古来征战几人回。" — 王翰
+"曾经沧海难为水，除却巫山不是云。" — 元稹
+"停车坐爱枫林晚，霜叶红于二月花。" — 杜牧
+"商女不知亡国恨，隔江犹唱后庭花。" — 杜牧
+"春蚕到死丝方尽，蜡炬成灰泪始干。" — 李商隐
+"身无彩凤双飞翼，心有灵犀一点通。" — 李商隐
+"夕阳无限好，只是近黄昏。" — 李商隐
+"问君能有几多愁，恰似一江春水向东流。" — 李煜
+"先天下之忧而忧，后天下之乐而乐。" — 范仲淹
+"醉翁之意不在酒，在乎山水之间也。" — 欧阳修
+"忧劳可以兴国，逸豫可以亡身。" — 欧阳修
+"月上柳梢头，人约黄昏后。" — 欧阳修
+"大江东去，浪淘尽，千古风流人物。" — 苏轼
+"人有悲欢离合，月有阴晴圆缺，此事古难全。" — 苏轼
+"但愿人长久，千里共婵娟。" — 苏轼
+"不识庐山真面目，只缘身在此山中。" — 苏轼
+"竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。" — 苏轼
+"博观而约取，厚积而薄发。" — 苏轼
+"古之立大事者，不惟有超世之才，亦必有坚忍不拔之志。" — 苏轼
+"回首向来萧瑟处，归去，也无风雨也无晴。" — 苏轼
+"生当作人杰，死亦为鬼雄。" — 李清照
+"此情无计可消除，才下眉头，却上心头。" — 李清照
+"莫等闲，白了少年头，空悲切。" — 岳飞
+"三十功名尘与土，八千里路云和月。" — 岳飞
+"纸上得来终觉浅，绝知此事要躬行。" — 陆游
+"位卑未敢忘忧国，事定犹须待阖棺。" — 陆游
+"众里寻他千百度，蓦然回首，那人却在灯火阑珊处。" — 辛弃疾
+"少年不识愁滋味，爱上层楼，爱上层楼。" — 辛弃疾
+"青山遮不住，毕竟东流去。" — 辛弃疾
+"人生自古谁无死，留取丹心照汗青。" — 文天祥
+"不要人夸好颜色，只留清气满乾坤。" — 王冕
+"粉身碎骨浑不怕，要留清白在人间。" — 于谦
+"明日复明日，明日何其多。我生待明日，万事成蹉跎。" — 钱福
+"世事洞明皆学问，人情练达即文章。" — 曹雪芹
+"满纸荒唐言，一把辛酸泪。" — 曹雪芹
+"假作真时真亦假，无为有处有还无。" — 曹雪芹
+"机关算尽太聪明，反误了卿卿性命。" — 曹雪芹
+"海纳百川，有容乃大；壁立千仞，无欲则刚。" — 林则徐
+"苟利国家生死以，岂因祸福避趋之。" — 林则徐
+"我自横刀向天笑，去留肝胆两昆仑。" — 谭嗣同
+"横眉冷对千夫指，俯首甘为孺子牛。" — 鲁迅
+"其实地上本没有路，走的人多了，也便成了路。" — 鲁迅
+"时间就像海绵里的水，只要愿挤，总还是有的。" — 鲁迅
+"为中华之崛起而读书。" — 周恩来
+"The only true wisdom is in knowing you know nothing." — Socrates
+"Wonder is the beginning of wisdom." — Socrates
+"Education is the kindling of a flame, not the filling of a vessel." — Socrates
+"Happiness depends upon ourselves." — Aristotle
+"Patience is bitter, but its fruit is sweet." — Aristotle
+"The whole is greater than the sum of its parts." — Aristotle
+"It is the mark of an educated mind to be able to entertain a thought without accepting it." — Aristotle
+"Courage is the first of human qualities because it is the quality which guarantees the others." — Aristotle
+"The roots of education are bitter, but the fruit is sweet." — Aristotle
+"Quality is not an act, it is a habit." — Aristotle
+"Pleasure in the job puts perfection in the work." — Aristotle
+"Fortune favors the bold." — Virgil
+"Love conquers all." — Virgil
+"Time flies." — Virgil
+"The greatest wealth is health." — Virgil
+"He who fears death will never do anything worthy of a man who is alive." — Seneca
+"Luck is what happens when preparation meets opportunity." — Seneca
+"It is not because things are difficult that we do not dare; it is because we do not dare that they are difficult." — Seneca
+"Life is long, if you know how to use it." — Seneca
+"Sometimes even to live is an act of courage." — Seneca
+"Difficulties strengthen the mind, as labor does the body." — Seneca
+"We suffer more often in imagination than in reality." — Seneca
+"Begin at once to live, and count each separate day as a separate life." — Seneca
+"The happiness of your life depends upon the quality of your thoughts." — Marcus Aurelius
+"You have power over your mind — not outside events. Realize this, and you will find strength." — Marcus Aurelius
+"Waste no more time arguing about what a good man should be. Be one." — Marcus Aurelius
+"The best revenge is to be unlike him who performed the injury." — Marcus Aurelius
+"Accept the things to which fate binds you, and love the people with whom fate brings you together." — Marcus Aurelius
+"Very little is needed to make a happy life; it is all within yourself." — Marcus Aurelius
+"The impediment to action advances action. What stands in the way becomes the way." — Marcus Aurelius
+"How long are you going to wait before you demand the best for yourself?" — Epictetus
+"It's not what happens to you, but how you react to it that matters." — Epictetus
+"First say to yourself what you would be; then do what you have to do." — Epictetus
+"No man is free who is not master of himself." — Epictetus
+"Wealth consists not in having great possessions, but in having few wants." — Epictetus
+"Men are disturbed not by things, but by the view which they take of them." — Epictetus
+"The Universe is change; our life is what our thoughts make it." — Marcus Aurelius
+"Do not act as if you were going to live ten thousand years. Death hangs over you." — Marcus Aurelius
+"To be even-minded is the greatest virtue." — Heraclitus
+"No man ever steps in the same river twice." — Heraclitus
+"Day by day, what you choose, what you think, and what you do is who you become." — Heraclitus
+"The content of your character is your choice." — Heraclitus
+"Cogito, ergo sum. (I think, therefore I am.)" — René Descartes
+"The reading of all good books is like a conversation with the finest minds of past centuries." — René Descartes
+"Divide each difficulty into as many parts as is feasible and necessary to resolve it." — René Descartes
+"I think, therefore I am." — René Descartes
+"To live without philosophizing is in truth the same as keeping the eyes closed." — René Descartes
+"Life is what happens when you're busy making other plans." — John Lennon
+"Imagination is more important than knowledge." — Albert Einstein
+"Try not to become a man of success, but rather try to become a man of value." — Albert Einstein
+"Anyone who has never made a mistake has never tried anything new." — Albert Einstein
+"Logic will get you from A to B. Imagination will take you everywhere." — Albert Einstein
+"Learn from yesterday, live for today, hope for tomorrow." — Albert Einstein
+"Strive not to be a success, but rather to be of value." — Albert Einstein
+"The true sign of intelligence is not knowledge but imagination." — Albert Einstein
+"Peace cannot be kept by force; it can only be achieved by understanding." — Albert Einstein
+"Stay hungry, stay foolish." — Steve Jobs
+"Your time is limited, so don't waste it living someone else's life." — Steve Jobs
+"Innovation distinguishes between a leader and a follower." — Steve Jobs
+"Design is not just what it looks like and feels like. Design is how it works." — Steve Jobs
+"Have the courage to follow your heart and intuition." — Steve Jobs
+"I have not failed. I've just found 10,000 ways that won't work." — Thomas Edison
+"Genius is one percent inspiration and ninety-nine percent perspiration." — Thomas Edison
+"Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time." — Thomas Edison
+"Many of life's failures are people who did not realize how close they were to success when they gave up." — Thomas Edison
+"If we did all the things we are capable of doing, we would literally astound ourselves." — Thomas Edison
+"It is during our darkest moments that we must focus to see the light." — Aristotle
+"The secret of getting ahead is getting started." — Mark Twain
+"Twenty years from now you will be more disappointed by the things you didn't do." — Mark Twain
+"Kindness is the language which the deaf can hear and the blind can see." — Mark Twain
+"The two most important days in your life are the day you are born and the day you find out why." — Mark Twain
+"Courage is resistance to fear, mastery of fear — not absence of fear." — Mark Twain
+"Travel is fatal to prejudice, bigotry, and narrow-mindedness." — Mark Twain
+"The man who does not read has no advantage over the man who cannot read." — Mark Twain
+"Whenever you find yourself on the side of the majority, it is time to pause and reflect." — Mark Twain
+"Do not go where the path may lead, go instead where there is no path and leave a trail." — Ralph Waldo Emerson
+"To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment." — Ralph Waldo Emerson
+"What lies behind us and what lies before us are tiny matters compared to what lies within us." — Ralph Waldo Emerson
+"Shallow men believe in luck. Strong men believe in cause and effect." — Ralph Waldo Emerson
+"Nothing great was ever achieved without enthusiasm." — Ralph Waldo Emerson
+"The only person you are destined to become is the person you decide to be." — Ralph Waldo Emerson
+"Live in the sunshine, swim the sea, drink the wild air." — Ralph Waldo Emerson
+"Always do what you are afraid to do." — Ralph Waldo Emerson
+"Life shrinks or expands in proportion to one's courage." — Anaïs Nin
+"We don't see things as they are, we see them as we are." — Anaïs Nin
+"Not all those who wander are lost." — J.R.R. Tolkien
+"All we have to decide is what to do with the time that is given us." — J.R.R. Tolkien
+"Even the smallest person can change the course of the future." — J.R.R. Tolkien
+"It is not the strength of the body that counts, but the strength of the spirit." — J.R.R. Tolkien
+"To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment." — Ralph Waldo Emerson
+"The mind is everything. What you think you become." — Buddha
+"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment." — Buddha
+"Peace comes from within. Do not seek it without." — Buddha
+"Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship." — Buddha
+"Thousands of candles can be lit from a single candle, and the life of the candle will not be shortened." — Buddha
+"Just as a candle cannot burn without fire, men cannot live without a spiritual life." — Buddha
+"The only real failure in life is not to be true to the best one knows." — Buddha
+"Better than a thousand hollow words, is one word that brings peace." — Buddha
+"To understand everything is to forgive everything." — Buddha
+"You will not be punished for your anger; you will be punished by your anger." — Buddha
+"What we think, we become." — Buddha
+"To keep the body in good health is a duty, otherwise we shall not be able to keep our mind strong and clear." — Buddha
+"Hatred does not cease by hatred, but only by love; this is the eternal rule." — Buddha
+"If you light a lamp for someone else, it will also brighten your path." — Buddha
+"The secret of health for both mind and body is not to mourn for the past, not to worry about the future." — Buddha
+"Every morning we are born again. What we do today is what matters most." — Buddha
+"Mastering others is strength. Mastering yourself is true power." — Lao Tzu
+"When I let go of what I am, I become what I might be." — Lao Tzu
+"Nature does not hurry, yet everything is accomplished." — Lao Tzu
+"A journey of a thousand miles begins with a single step." — Lao Tzu
+"Being deeply loved by someone gives you strength, while loving someone deeply gives you courage." — Lao Tzu
+"Silence is a source of great strength." — Lao Tzu
+"Respond intelligently even to unintelligent treatment." — Lao Tzu
+"The wise man does not lay up his own treasures. The more he gives to others, the more he has for his own." — Lao Tzu
+"At the center of your being you have the answer; you know who you are and you know what you want." — Lao Tzu
+"Care about what other people think and you will always be their prisoner." — Lao Tzu
+"Be content with what you have; rejoice in the way things are." — Lao Tzu
+"From wonder into wonder existence opens." — Lao Tzu
+"The best fighter is never angry." — Lao Tzu
+"Music in the soul can be heard by the universe." — Lao Tzu
+"The flame that burns twice as bright burns half as long." — Lao Tzu
+"Your own positive future begins in this moment. All you have is right now." — Lao Tzu
+"In the process of letting go you will lose many things from the past, but you will find yourself." — Deepak Chopra
+"The universe is not outside of you. Look inside yourself; everything that you want, you already are." — Rumi
+"The wound is the place where the Light enters you." — Rumi
+"Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself." — Rumi
+"Don't grieve. Anything you lose comes round in another form." — Rumi
+"The only lasting beauty is the beauty of the heart." — Rumi
+"Let yourself be silently drawn by the strange pull of what you really love." — Rumi
+"What you seek is seeking you." — Rumi
+"Raise your words, not your voice. It is rain that grows flowers, not thunder." — Rumi
+"Sell your cleverness and buy bewilderment." — Rumi
+"Doubt kills more dreams than failure ever will." — Suzy Kassem
+"A man is but the product of his thoughts. What he thinks, he becomes." — Mahatma Gandhi
+"The best way to find yourself is to lose yourself in the service of others." — Mahatma Gandhi
+"Live as if you were to die tomorrow. Learn as if you were to live forever." — Mahatma Gandhi
+"Strength does not come from physical capacity. It comes from an indomitable will." — Mahatma Gandhi
+"Happiness is when what you think, what you say, and what you do are in harmony." — Mahatma Gandhi
+"First they ignore you, then they laugh at you, then they fight you, then you win." — Mahatma Gandhi
+"An eye for an eye only ends up making the whole world blind." — Mahatma Gandhi
+"The weak can never forgive. Forgiveness is the attribute of the strong." — Mahatma Gandhi
+"Freedom is not worth having if it does not include the freedom to make mistakes." — Mahatma Gandhi
+"Earth provides enough to satisfy every man's needs, but not every man's greed." — Mahatma Gandhi
+"In a gentle way, you can shake the world." — Mahatma Gandhi
+"Success is not final, failure is not fatal: it is the courage to continue that counts." — Winston Churchill
+"Never, never, never give up." — Winston Churchill
+"To improve is to change; to be perfect is to change often." — Winston Churchill
+"You have enemies? Good. That means you've stood up for something." — Winston Churchill
+"If you're going through hell, keep going." — Winston Churchill
+"We make a living by what we get, but we make a life by what we give." — Winston Churchill
+"Courage is what it takes to stand up and speak; courage is also what it takes to sit down and listen." — Winston Churchill
+"Attitude is a little thing that makes a big difference." — Winston Churchill
+"The greatest glory in living lies not in never falling, but in rising every time we fall." — Nelson Mandela
+"It always seems impossible until it's done." — Nelson Mandela
+"Education is the most powerful weapon which you can use to change the world." — Nelson Mandela
+"Lead from the back and let others believe they are in front." — Nelson Mandela
+"Resentment is like drinking poison and then hoping it will kill your enemies." — Nelson Mandela
+"To deny people their human rights is to challenge their very humanity." — Nelson Mandela
+"I learned that courage was not the absence of fear, but the triumph over it." — Nelson Mandela
+"Do not judge me by my successes, judge me by how many times I fell down and got back up again." — Nelson Mandela
+"Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate; only love can do that." — Martin Luther King Jr.
+"I have a dream." — Martin Luther King Jr.
+"Injustice anywhere is a threat to justice everywhere." — Martin Luther King Jr.
+"The time is always right to do what is right." — Martin Luther King Jr.
+"Faith is taking the first step even when you don't see the whole staircase." — Martin Luther King Jr.
+"Life's most persistent and urgent question is, 'What are you doing for others?'" — Martin Luther King Jr.
+"We must accept finite disappointment, but never lose infinite hope." — Martin Luther King Jr.
+"If you can't fly then run, if you can't run then walk, if you can't walk then crawl." — Martin Luther King Jr.
+"We may have all come on different ships, but we're in the same boat now." — Martin Luther King Jr.
+"Education is not preparation for life; education is life itself." — John Dewey
+"The self is not something ready-made, but something in continuous formation through choice of action." — John Dewey
+"Do not wait to strike till the iron is hot; but make it hot by striking." — William Butler Yeats
+"Education is not the filling of a pail, but the lighting of a fire." — William Butler Yeats
+"There are no strangers here; Only friends you haven't yet met." — William Butler Yeats
+"Think like a man of action, act like a man of thought." — Henri Bergson
+"The only thing that will redeem mankind is cooperation." — Bertrand Russell
+"To be without some of the things you want is an indispensable part of happiness." — Bertrand Russell
+"The whole problem with the world is that fools and fanatics are always so certain of themselves." — Bertrand Russell
+"Fear is the main source of superstition, and one of the main sources of cruelty." — Bertrand Russell
+"The good life is one inspired by love and guided by knowledge." — Bertrand Russell
+"I would never die for my beliefs because I might be wrong." — Bertrand Russell
+"To conquer fear is the beginning of wisdom." — Bertrand Russell
+"When one door closes, another opens; but we often look so long and so regretfully upon the closed door." — Alexander Graham Bell
+"Genius is eternal patience." — Michelangelo
+"The greatest danger for most of us is not that our aim is too high and we miss it, but that it is too low and we reach it." — Michelangelo
+"Art is the elimination of the unnecessary." — Pablo Picasso
+"Everything you can imagine is real." — Pablo Picasso
+"The purpose of art is washing the dust of daily life off our souls." — Pablo Picasso
+"I paint objects as I think them, not as I see them." — Pablo Picasso
+"Some painters transform the sun into a yellow spot, others transform a yellow spot into the sun." — Pablo Picasso
+"Wisdom begins in wonder." — Socrates
+"True knowledge exists in knowing that you know nothing." — Socrates
+"An honest man is always a child." — Socrates
+"Be as you wish to seem." — Socrates
+"Beware the barrenness of a busy life." — Socrates
+"If a man is proud of his wealth, he should not be praised until it is known how he employs it." — Socrates
+"The way to gain a good reputation is to endeavor to be what you desire to appear." — Socrates
+"The greatest way to live with honor in this world is to be what we pretend to be." — Socrates
+"One who is injured ought not to return the injury, for on no account can it be right to do an injustice." — Socrates
+"Understanding a question is half an answer." — Socrates
+"He is richest who is content with the least, for content is the wealth of nature." — Socrates
+"Nothing is so well learned as that which is discovered." — Socrates
+"Sometimes you put walls up not to keep people out, but to see who cares enough to break them down." — Socrates
+"The only good is knowledge and the only evil is ignorance." — Socrates
+"He who is not contented with what he has, would not be contented with what he would like to have." — Socrates
+"Wisdom is knowing how little we know." — Socrates
+"The mind is not a vessel to be filled, but a fire to be kindled." — Plutarch
+"To make no mistakes is not in the power of man; but from their errors and mistakes the wise and good learn wisdom." — Plutarch
+"Know how to listen, and you will profit even from those who talk badly." — Plutarch
+"What we achieve inwardly will change outer reality." — Plutarch
+"Painting is silent poetry, and poetry is painting that speaks." — Plutarch
+"The real destroyer of the liberties of the people is he who spreads among them bounties and donations." — Plutarch
+"Perseverance is the master of fate." — Plutarch
+"An imbalance between rich and poor is the oldest and most fatal ailment of all republics." — Plutarch
+"The whole of life is but a moment of time." — Plutarch
+"To find fault is easy; to do better may be difficult." — Plutarch
+"Neither blame or praise yourself." — Plutarch
+"Rest is the sweet sauce of labor." — Plutarch
+"Adversity is the only balance to weigh friends." — Plutarch
+"Philosophy is the art of living." — Plutarch
+"The very spring and root of honesty and virtue lie in good education." — Plutarch
+"To be ignorant of the lives of the most celebrated men of antiquity is to continue in a state of childhood." — Plutarch
+"Fate leads him who follows it, and drags him who resists." — Plutarch
+"Do not speak of your happiness to one less fortunate than yourself." — Plutarch
+"Let us carefully observe those good qualities wherein our enemies excel us; and endeavor to excel them." — Plutarch
+"Character is long-standing habit." — Plutarch
+"If I have seen further it is by standing on the shoulders of Giants." — Isaac Newton
+"Truth is ever to be found in simplicity, and not in the multiplicity and confusion of things." — Isaac Newton
+"Tact is the knack of making a point without making an enemy." — Isaac Newton
+"What we know is a drop, what we don't know is an ocean." — Isaac Newton
+"Live your life as an Exclamation rather than an Explanation." — Isaac Newton
+"We are like dwarfs sitting on the shoulders of giants." — Isaac Newton
+"To every action there is always opposed an equal reaction." — Isaac Newton
+"No great discovery was ever made without a bold guess." — Isaac Newton
+"Nature is pleased with simplicity." — Isaac Newton
+"A man may imagine things that are false, but he can only understand things that are true." — Isaac Newton
+"Self-reverence, self-knowledge, self-control; these three alone lead life to sovereign power." — Alfred Lord Tennyson
+"Dreams are true while they last, and do we not live in dreams?" — Alfred Lord Tennyson
+"Theirs not to reason why, theirs but to do and die." — Alfred Lord Tennyson
+"Knowledge comes, but wisdom lingers." — Alfred Lord Tennyson
+"Hope smiles from the threshold of the year to come, whispering 'it will be happier.'" — Alfred Lord Tennyson
+"Act as if what you do makes a difference. It does." — William James
+"The greatest weapon against stress is our ability to choose one thought over another." — William James
+"The art of being wise is knowing what to overlook." — William James
+"Be not afraid of life. Believe that life is worth living, and your belief will help create the fact." — William James
+"The deepest principle in human nature is the craving to be appreciated." — William James
+"Truth happens to an idea. It becomes true, is made true by events." — William James
+"Common sense and a sense of humor are the same thing, moving at different speeds." — William James
+"To change one's life: start immediately, do it flamboyantly, no exceptions." — William James
+"Most people never run far enough on their first wind to find out they've got a second." — William James
+"Action may not always bring happiness, but there is no happiness without action." — William James
+"Anything you may hold firmly in your imagination can be yours." — William James
+"The greatest discovery of any generation is that a human can alter his life by altering his attitude." — William James
+"Good humor is a tonic for mind and body." — Grenville Kleiser
+"Every noble work is at first impossible." — Thomas Carlyle
+"Permanence, perseverance and persistence in spite of all obstacles distinguishes the strong from the weak." — Thomas Carlyle
+"The tragedy of life is not so much what men suffer, but rather what they miss." — Thomas Carlyle
+"A person who is wise does nothing against their will, nothing with sighing or under coercion." — Thomas Carlyle
+"Clever men are good, but they are not the best." — Thomas Carlyle
+"Endurance is patience concentrated." — Thomas Carlyle
+"To us also, through every star, through every blade of grass, is not God made visible." — Thomas Carlyle
+"Silence is the element in which great things fashion themselves together." — Thomas Carlyle
+"No pressure, no diamonds." — Thomas Carlyle
+"The block of granite which was an obstacle in the pathway of the weak becomes a stepping-stone in the pathway of the strong." — Thomas Carlyle
+"History is the essence of innumerable biographies." — Thomas Carlyle
+"Work is the grand cure of all the maladies and miseries that ever beset mankind." — Thomas Carlyle
+"A loving heart is the truest wisdom." — Charles Dickens
+"Have a heart that never hardens, and a temper that never tires, and a touch that never hurts." — Charles Dickens
+"Reflect upon your present blessings, of which every man has many; not on your past misfortunes." — Charles Dickens
+"No one is useless in this world who lightens the burdens of another." — Charles Dickens
+"We forge the chains we wear in life." — Charles Dickens
+"It was the best of times, it was the worst of times." — Charles Dickens
+"Charity begins at home, and justice begins next door." — Charles Dickens
+"The important thing is to not stop questioning." — Albert Einstein
+"Out of clutter, find simplicity. From discord, find harmony. In the middle of difficulty lies opportunity." — Albert Einstein
+"Look deep into nature, and then you will understand everything better." — Albert Einstein
+"Insanity: doing the same thing over and over again and expecting different results." — Albert Einstein
+"It's not that I'm so smart, it's just that I stay with problems longer." — Albert Einstein
+"I speak to everyone in the same way, whether he is the garbage man or the president of the university." — Albert Einstein
+"A person who never made a mistake never tried anything new." — Albert Einstein
+"Once you stop learning, you start dying." — Albert Einstein
+"I have no special talents. I am only passionately curious." — Albert Einstein
+"Everything should be made as simple as possible, but not simpler." — Albert Einstein
+"Life is like riding a bicycle. To keep your balance, you must keep moving." — Albert Einstein
+"Coincidence is God's way of remaining anonymous." — Albert Einstein
+"Only a life lived for others is a life worthwhile." — Albert Einstein
+"日光之下并无新事。" — 《圣经·传道书》
+"已有的事，后必再有；已行的事，后必再行。" — 《圣经·传道书》
+"智慧人的舌头，却为医人的良药。" — 《圣经·箴言》
+"回答柔和，使怒消退；言语暴戾，触动怒气。" — 《圣经·箴言》
+"多言多语难免有过；禁止嘴唇是有智慧。" — 《圣经·箴言》
+"善人给子孙遗留产业；罪人为义人积存资财。" — 《圣经·箴言》
+"恨能挑起争端；爱能遮掩一切过错。" — 《圣经·箴言》
+"骄傲在败坏以先；狂心在跌倒之前。" — 《圣经·箴言》
+"人心忧虑，屈而不伸；一句良言，使心欢乐。" — 《圣经·箴言》
+"喜乐的心，乃是良药；忧伤的灵，使骨枯干。" — 《圣经·箴言》
+"聪明人的心得知识；智慧人的耳求知识。" — 《圣经·箴言》
+"设筵满屋，大家相争，不如有块干饼，大家相安。" — 《圣经·箴言》
+"敬畏耶和华是智慧的开端；认识至圣者便是聪明。" — 《圣经·箴言》
+"明哲人眼前有智慧；愚昧人眼望地极。" — 《圣经·箴言》
+"人有见识，就不轻易发怒；宽恕人的过失，便是自己的荣耀。" — 《圣经·箴言》
+"一句话说得合宜，就如金苹果在银网子里。" — 《圣经·箴言》
+"蚂蚁是无力之类，却在夏天预备粮食。" — 《圣经·箴言》
+"铁磨铁，磨出刃来；朋友相感也是如此。" — 《圣经·箴言》
+"水中照脸，彼此相符；人与人，心也相对。" — 《圣经·箴言》
+"炉为炼金，鼎为炼银；人的称赞也试炼人。" — 《圣经·箴言》
+"爱人如己。" — 《圣经·马太福音》
+"要爱你们的仇敌，为那逼迫你们的祷告。" — 《圣经·马太福音》
+"不要为明天忧虑，因为明天自有明天的忧虑。" — 《圣经·马太福音》
+"你们愿意人怎样待你们，你们也要怎样待人。" — 《圣经·马太福音》
+"施比受更为有福。" — 《圣经·使徒行传》
+"凡事谦虚、温柔、忍耐，用爱心互相宽容。" — 《圣经·以弗所书》
+"我无论在什么景况都可以知足，这是我已经学会了。" — 《圣经·腓立比书》
+"凡事都有定期，天下万务都有定时。" — 《圣经·传道书》
+"两个人总比一个人好，因为二人劳碌同得美好的果效。" — 《圣经·传道书》
+"I can do all things through Christ who strengthens me." — Philippians 4:13
+"For God so loved the world that he gave his one and only Son." — John 3:16
+"The Lord is my shepherd; I shall not want." — Psalm 23:1
+"With men this is impossible; but with God all things are possible." — Matthew 19:26
+"Judge not, that ye be not judged." — Matthew 7:1
+"Ask, and it shall be given you; seek, and ye shall find." — Matthew 7:7
+"Blessed are the peacemakers: for they shall be called the children of God." — Matthew 5:9
+"Be strong and of a good courage; be not afraid, neither be thou dismayed." — Joshua 1:9
+"Pride goes before destruction, a haughty spirit before a fall." — Proverbs 16:18
+"Train up a child in the way he should go: and when he is old, he will not depart from it." — Proverbs 22:6
+"A soft answer turns away wrath: but grievous words stir up anger." — Proverbs 15:1
+"To every thing there is a season, and a time to every purpose under the heaven." — Ecclesiastes 3:1
+"Let your light so shine before men, that they may see your good works." — Matthew 5:16
+"身体是革命的本钱。" — 中国谚语
+"一寸光阴一寸金，寸金难买寸光阴。" — 中国谚语
+"有志者，事竟成。" — 中国谚语
+"水滴石穿，绳锯木断。" — 中国谚语
+"良药苦口利于病，忠言逆耳利于行。" — 中国谚语
+"近朱者赤，近墨者黑。" — 中国谚语
+"不入虎穴，焉得虎子。" — 中国谚语
+"千里送鹅毛，礼轻情意重。" — 中国谚语
+"路遥知马力，日久见人心。" — 中国谚语
+"知己知彼，百战不殆。" — 中国谚语
+"吃一堑，长一智。" — 中国谚语
+"少壮不努力，老大徒伤悲。" — 中国谚语
+"书到用时方恨少，事非经过不知难。" — 中国谚语
+"不经一事，不长一智。" — 中国谚语
+"玉不琢，不成器；人不学，不知道。" — 《礼记》
+"学然后知不足，教然后知困。" — 《礼记》
+"独学而无友，则孤陋而寡闻。" — 《礼记》
+"凡事豫则立，不豫则废。" — 《礼记》
+"来而不往，非礼也。" — 《礼记》
+"文武之道，一张一弛。" — 《礼记》
+"勿以恶小而为之，勿以善小而不为。" — 刘备
+"鞠躬尽力，死而后已。" — 诸葛亮
+"由俭入奢易，由奢入俭难。" — 司马光
+"兼听则明，偏信则暗。" — 魏征
+"以铜为镜，可以正衣冠；以古为镜，可以知兴替；以人为镜，可以明得失。" — 李世民
+"前事不忘，后事之师。" — 《战国策》
+"亡羊而补牢，未为迟也。" — 《战国策》
+"善作者不必善成，善始者不必善终。" — 《战国策》
+"疑行无成，疑事无功。" — 《商君书》
+"道虽迩，不行不至；事虽小，不为不成。" — 《荀子》
+"蓬生麻中，不扶自直。" — 《荀子》
+"故不登高山，不知天之高也；不临深溪，不知地之厚也。" — 《荀子》
+"言有招祸也，行有招辱也，君子慎其所立乎。" — 《荀子》
+"是是、非非谓之知，非是、是非谓之愚。" — 《荀子》
+"君子耻不修，不耻见污。" — 《荀子》
+"故君子博学而日参省乎己，则知明而行无过矣。" — 《荀子》
+"求之而后得，为之而后成。" — 《荀子》
+"自知者不怨人，知命者不怨天。" — 《荀子》
+"故木受绳则直，金就砺则利。" — 《荀子》
+"道常无为而无不为。" — 老子
+"大直若屈，大巧若拙，大辩若讷。" — 老子
+"知者不言，言者不知。" — 老子
+"天下难事，必作于易；天下大事，必作于细。" — 老子
+"轻诺必寡信，多易必多难。" — 老子
+"知止可以不殆。" — 老子
+"大成若缺，其用不弊。大盈若冲，其用不穷。" — 老子
+"夫唯不争，故天下莫能与之争。" — 老子
+"兵强则灭，木强则折。" — 老子
+"天之道，利而不害；圣人之道，为而不争。" — 老子
+"大方无隅，大器晚成。" — 老子
+"飘风不终朝，骤雨不终日。" — 老子
+"图难于其易，为大于其细。" — 老子
+"民之从事，常于几成而败之。慎终如始，则无败事。" — 老子
+"吾所以有大患者，为吾有身；及吾无身，吾有何患。" — 老子
+"不自见，故明；不自是，故彰；不自伐，故有功；不自矜，故长。" — 老子
+"五色令人目盲，五音令人耳聋。" — 老子
+"不见可欲，使心不乱。" — 老子
+"圣人之道，为而不争。" — 老子
+"志不强者智不达，言不信者行不果。" — 墨子
+"天欲义而恶不义。" — 墨子
+"兼相爱，交相利。" — 墨子
+"君子不镜于水，而镜于人。" — 墨子
+"夫爱人者，人必从而爱之；利人者，人必从而利之。" — 墨子
+"俭节则昌，淫佚则亡。" — 墨子
+"名不可简而成也，誉不可巧而立也。" — 墨子
+"事无终始，无务多业。" — 墨子
+"仁人之所以为事者，必兴天下之利，除去天下之害。" — 墨子
+"甘瓜苦蒂，天下物无全美。" — 墨子
+"A room without books is like a body without a soul." — Cicero
+"If you have a garden and a library, you have everything you need." — Cicero
+"Gratitude is not only the greatest of virtues, but the parent of all others." — Cicero
+"The life of the dead is placed in the memory of the living." — Cicero
+"Friendship improves happiness and abates misery." — Cicero
+"What is morally wrong can never be advantageous." — Cicero
+"The welfare of the people is the ultimate law." — Cicero
+"To be content with what we possess is the greatest and most secure of riches." — Cicero
+"Any man can make mistakes, but only an idiot persists in his error." — Cicero
+"Live as brave men; and if fortune is adverse, front its blows with brave hearts." — Cicero
+"While there's life, there's hope." — Cicero
+"Justice is the set and constant purpose which gives every man his due." — Cicero
+"To be ignorant of what occurred before you were born is to remain always a child." — Cicero
+"Not for ourselves alone are we born." — Cicero
+"The noblest spirit is most strongly attracted by the love of glory." — Cicero
+"Silence is one of the great arts of conversation." — Cicero
+"Read at every wait; read at all hours; read within leisure; read in times of labor; read as one goes in; read as one goes out." — Cicero
+"The precepts of the law are these: to live honestly, to injure no one, and to give everyone his due." — Cicero
+"Freedom is a possession of inestimable value." — Cicero
+"A happy life consists in tranquility of mind." — Cicero
+"In anger nothing right or judicious can be done." — Cicero
+"天下兴亡，匹夫有责。" — 顾炎武
+"为山九仞，功亏一篑。" — 《尚书》
+"满招损，谦受益。" — 《尚书》
+"民惟邦本，本固邦宁。" — 《尚书》
+"工欲善其事，必先利其器。" — 《论语》
+"人无远虑，必有近忧。" — 《论语》
+"不在其位，不谋其政。" — 《论语》
+"君子成人之美，不成人之恶。" — 《论语》
+"其身正，不令而行；其身不正，虽令不从。" — 《论语》
+"名不正，则言不顺；言不顺，则事不成。" — 《论语》
+"不义而富且贵，于我如浮云。" — 《论语》
+"巧言令色，鲜矣仁。" — 《论语》
+"道不同，不相为谋。" — 《论语》
+"三军可夺帅也，匹夫不可夺志也。" — 《论语》
+"君子求诸己，小人求诸人。" — 《论语》
+"过而不改，是谓过矣。" — 《论语》
+"君子耻其言而过其行。" — 《论语》
+"The unexamined life is not worth living." — Socrates
+"Let him that would move the world first move himself." — Socrates
+"Envy is the ulcer of the soul." — Socrates
+"If you want to be a good saddler, saddle the worst horse." — Socrates
+"Be slow to fall into friendship; but when thou art in, continue firm and constant." — Socrates
+"Get not your friends by bare compliments, but by giving them sensible tokens of your love." — Socrates
+"Nature has given us two ears, two eyes, and but one tongue." — Socrates
+"Worthless people live only to eat and drink; people of worth eat and drink only to live." — Socrates
+"By all means, marry. If you get a good wife, you'll become happy; if you get a bad one, you'll become a philosopher." — Socrates
+"The hottest love has the coldest end." — Socrates
+"Our youth now love luxury. They have bad manners, contempt for authority." — Socrates
+"Beauty is a short-lived tyranny." — Socrates
+"Think not those faithful who praise all thy words and actions; but those who kindly reprove thy faults." — Socrates
+"To find yourself, think for yourself." — Socrates
+"He is a man of courage who does not run away, but remains at his post and fights against the enemy." — Socrates
+"From the deepest desires often come the deadliest hate." — Socrates
+"False words are not only evil in themselves, but they infect the soul with evil." — Socrates
+"Life contains but two tragedies. One is not to get your heart's desire; the other is to get it." — George Bernard Shaw
+"Progress is impossible without change, and those who cannot change their minds cannot change anything." — George Bernard Shaw
+"Youth is wasted on the young." — George Bernard Shaw
+"Success does not consist in never making mistakes but in never making the same one a second time." — George Bernard Shaw
+"Beware of false knowledge; it is more dangerous than ignorance." — George Bernard Shaw
+"The single biggest problem in communication is the illusion that it has taken place." — George Bernard Shaw
+"A life spent making mistakes is not only more honorable, but more useful than a life spent doing nothing." — George Bernard Shaw
+"Both optimists and pessimists contribute to society. The optimist invents the airplane, the pessimist the parachute." — George Bernard Shaw
+"Imagination is the beginning of creation." — George Bernard Shaw
+"We don't stop playing because we grow old; we grow old because we stop playing." — George Bernard Shaw
+"Just do what must be done. This may not be happiness, but it is greatness." — George Bernard Shaw
+"He who can, does. He who cannot, teaches." — George Bernard Shaw
+"A government that robs Peter to pay Paul can always depend on the support of Paul." — George Bernard Shaw
+"There is no love sincerer than the love of food." — George Bernard Shaw
+"You see things; and you say 'Why?' But I dream things that never were; and I say 'Why not?'" — George Bernard Shaw
+"Without art, the crudeness of reality would make the world unbearable." — George Bernard Shaw
+"All great truths begin as blasphemies." — George Bernard Shaw
+"When a thing is funny, search it carefully for a hidden truth." — George Bernard Shaw
+"Few people think more than two or three times a year; I have made an international reputation for myself by thinking once or twice a week." — George Bernard Shaw
+"诸恶莫作，众善奉行。" — 佛家偈语
+"心中有佛，所见皆佛。" — 佛家禅语
+"一花一世界，一叶一如来。" — 佛家禅语
+"色即是空，空即是色。" — 《心经》
+"照见五蕴皆空，度一切苦厄。" — 《心经》
+"菩提本无树，明镜亦非台。本来无一物，何处惹尘埃。" — 惠能
+"不是风动，不是幡动，仁者心动。" — 惠能
+"烦恼即菩提。" — 佛家禅语
+"放下屠刀，立地成佛。" — 佛家禅语
+"苦海无边，回头是岸。" — 佛家禅语
+"一切有为法，如梦幻泡影，如露亦如电，应作如是观。" — 《金刚经》
+"应无所住而生其心。" — 《金刚经》
+"过去心不可得，现在心不可得，未来心不可得。" — 《金刚经》
+"若以色见我，以音声求我，是人行邪道，不能见如来。" — 《金刚经》
+"凡所有相，皆是虚妄。若见诸相非相，即见如来。" — 《金刚经》
+"大悲无泪，大悟无言，大笑无声。" — 佛家禅语
+"一念愚即般若绝，一念智即般若生。" — 佛家禅语
+"缘起性空。" — 佛家禅语
+"万法皆空，因果不空。" — 佛家禅语
+"心如工画师，能画诸世间。" — 《华严经》
+"不忘初心，方得始终。" — 《华严经》
+"以此心念佛，万行皆圆。" — 佛家禅语
