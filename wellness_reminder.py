@@ -101,6 +101,15 @@ def is_session_available() -> bool:
 
 
 # ============================================================
+# 静默时段检查
+# ============================================================
+def is_quiet_hours():
+    """检查当前是否在静默时段 (21:00--07:00), 该时段内不发送运动提醒."""
+    now = datetime.now()
+    return now.hour >= 21 or now.hour < 7
+
+
+# ============================================================
 # 本地名言管理
 # ============================================================
 def get_random_quote() -> str | None:
@@ -288,6 +297,8 @@ def check_journal_errors() -> tuple[int, int, int]:
     """
     检查近1小时 journalctl 中的警告/错误.
     先查用户级, 再查系统级 (如果权限够).
+    使用 -o json 根据 PRIORITY 字段准确分类:
+      PRIORITY 0-3 → 错误,  PRIORITY 4 → 警告.
     返回: (错误数, 警告数, 总行数)
     """
     err_count, warn_count = 0, 0
@@ -299,20 +310,24 @@ def check_journal_errors() -> tuple[int, int, int]:
                  "--since", "1 hour ago",
                  "-p", "warning",
                  "--no-pager", "-q",
-                 "-n", "50"],
+                 "-n", "50",
+                 "-o", "json"],
                 capture_output=True, text=True, timeout=10,
             )
             for line in result.stdout.strip().split("\n"):
                 line = line.strip()
                 if not line:
                     continue
-                lower = line.lower()
-                is_err = any(kw in lower for kw in
-                             ["error", "critical", "fail", "fatal"])
-                if is_err:
-                    err_count += 1
-                else:
-                    warn_count += 1
+                try:
+                    entry = json.loads(line)
+                    priority = int(entry.get("PRIORITY", 4))
+                    if priority <= 3:
+                        err_count += 1
+                    else:
+                        warn_count += 1
+                except (json.JSONDecodeError, ValueError):
+                    # 个别行解析失败则跳过, 不影响整体统计
+                    continue
         except subprocess.CalledProcessError:
             logging.debug(f"journalctl {scope} 检查跳过 (权限不足)")
             continue
@@ -411,9 +426,12 @@ def main():
     else:
         logging.warning("等待桌面会话超时, 通知功能可能不可用")
 
-    # 启动后立即执行一次
+    # 启动后立即执行一次 (静默时段跳过)
     try:
-        run_reminder_cycle()
+        if is_quiet_hours():
+            logging.info("当前处于静默时段 (21:00-07:00), 跳过首次运动提醒")
+        else:
+            run_reminder_cycle()
     except Exception as e:
         logging.error(f"首次提醒周期异常: {e}", exc_info=True)
 
@@ -432,7 +450,10 @@ def main():
             if not running:
                 break
 
-            run_reminder_cycle()
+            if is_quiet_hours():
+                logging.info("当前处于静默时段 (21:00-07:00), 跳过本轮运动提醒")
+            else:
+                run_reminder_cycle()
         except Exception as e:
             logging.error(f"提醒周期异常: {e}", exc_info=True)
             time.sleep(30)
