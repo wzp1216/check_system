@@ -295,15 +295,15 @@ def get_disk_usage() -> tuple[str, float] | None:
 
 def check_journal_errors() -> tuple[int, int, int]:
     """
-    检查近1小时 journalctl 中的警告/错误.
-    先查用户级, 再查系统级 (如果权限够).
+    检查近1小时系统级 journalctl 中的警告/错误.
+    只查系统级 (--system), 忽略用户级应用噪音.
     使用 -o json 根据 PRIORITY 字段准确分类:
       PRIORITY 0-3 → 错误,  PRIORITY 4 → 警告.
     返回: (错误数, 警告数, 总行数)
     """
     err_count, warn_count = 0, 0
 
-    for scope in ["--user", "--system"]:
+    for scope in ["--system"]:
         try:
             result = subprocess.run(
                 ["journalctl", scope,
@@ -516,7 +516,7 @@ def test_mode():
     else:
         print("  磁盘:   N/A")
     if jtot > 0:
-        print(f"  日志:   {jerr} 错误, {jwarn} 警告 (近1小时, 含 user+system)")
+        print(f"  日志:   {jerr} 错误, {jwarn} 警告 (近1小时, 系统级)")
     else:
         print("  日志:   无警告/错误 ✅")
 
