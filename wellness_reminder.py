@@ -310,7 +310,6 @@ def check_journal_errors() -> tuple[int, int, int]:
                  "--since", "1 hour ago",
                  "-p", "warning",
                  "--no-pager", "-q",
-                 "-n", "50",
                  "-o", "json"],
                 capture_output=True, text=True, timeout=10,
             )
