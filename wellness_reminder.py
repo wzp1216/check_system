@@ -360,8 +360,10 @@ def run_reminder_cycle():
     # ---- 3. 构建精简通知: 运动一下 -- 错误X个 警告X个 -- 名言 ----
     parts = ["🏃 运动一下"]
 
-    if jnl_total > 0:
-        parts.append(f"⚠️ 错误{jnl_err}个 警告{jnl_warn}个")
+    if jnl_err > 0:
+        parts.append(f"🔴 错误{jnl_err}个")
+    if jnl_warn > 0:
+        parts.append(f"⚠️ 警告{jnl_warn}个")
 
     # CPU/内存/磁盘异常时追加告警标记
     has_resource_issue = False
@@ -380,7 +382,7 @@ def run_reminder_cycle():
     body = " — ".join(parts)
 
     # 异常时提升 urgency
-    has_issue = has_resource_issue or jnl_err > 0
+    has_issue = has_resource_issue or jnl_err > 0 or jnl_warn > 20
     urgency = "critical" if has_issue else "normal"
 
     notify_send("健康提醒", body, urgency=urgency, timeout=NOTIFY_TIMEOUT)
