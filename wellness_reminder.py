@@ -34,6 +34,19 @@ CPU_THRESHOLD    = 80       # CPU 使用率超过此值视为异常 (%)
 MEM_THRESHOLD    = 80       # 内存使用率超过此值视为异常 (%)
 DISK_THRESHOLD   = 85       # 磁盘使用率超过此值视为异常 (%)
 
+# 警告分级: 根据消息来源区分严重程度
+# 严重来源的警告无论数量多少都提示; 非严重来源超过阈值才提示
+WARN_SEVERE_SOURCES = {
+    "kernel",           # 内核警告 (硬件/驱动/OOM 等)
+    "systemd",          # systemd 核心
+    "systemd-udevd",    # 设备管理
+    "smartd",           # 磁盘健康监控
+    "mdadm",            # 软 RAID
+    "sshd",             # SSH 服务 (安全相关)
+    "sudo",             # 权限提升 (安全相关)
+}
+WARN_NONSEVERE_THRESHOLD = 100  # 非严重警告超过此数量才提示 (条/小时)
+
 QUOTES_API       = "https://v1.hitokoto.cn/"   # 一言 API (月度追加用)
 QUOTES_TIMEOUT   = 8        # API 请求超时 (秒)
 MONTHLY_ADD_COUNT = 100     # 每月追加名言数量
@@ -299,9 +312,12 @@ def check_journal_errors() -> tuple[int, int, int]:
     只查系统级 (--system), 忽略用户级应用噪音.
     使用 -o json 根据 PRIORITY 字段准确分类:
       PRIORITY 0-3 → 错误,  PRIORITY 4 → 警告.
-    返回: (错误数, 警告数, 总行数)
+    警告按来源 (SYSLOG_IDENTIFIER) 分级:
+      - 严重来源: 内核/systemd/硬件/安全等, 无论数量都提示
+      - 非严重来源: GNOME/应用等, 超过阈值才提示
+    返回: (错误数, 严重警告数, 非严重警告数)
     """
-    err_count, warn_count = 0, 0
+    err_count, warn_severe, warn_nonsevere = 0, 0, 0
 
     for scope in ["--system"]:
         try:
@@ -323,7 +339,12 @@ def check_journal_errors() -> tuple[int, int, int]:
                     if priority <= 3:
                         err_count += 1
                     else:
-                        warn_count += 1
+                        # PRIORITY 4: 按来源分级
+                        source = entry.get("SYSLOG_IDENTIFIER", "")
+                        if source in WARN_SEVERE_SOURCES:
+                            warn_severe += 1
+                        else:
+                            warn_nonsevere += 1
                 except (json.JSONDecodeError, ValueError):
                     # 个别行解析失败则跳过, 不影响整体统计
                     continue
@@ -334,8 +355,7 @@ def check_journal_errors() -> tuple[int, int, int]:
             logging.debug(f"journalctl {scope} 检查跳过: {e}")
             continue
 
-    total = err_count + warn_count
-    return err_count, warn_count, total
+    return err_count, warn_severe, warn_nonsevere
 
 
 # ============================================================
@@ -355,15 +375,21 @@ def run_reminder_cycle():
     mem_pct = get_memory_percent()
     disk_info = get_disk_usage()
     disk_part, disk_pct = disk_info if disk_info else ("", 0.0)
-    jnl_err, jnl_warn, jnl_total = check_journal_errors()
+    jnl_err, jnl_warn_severe, jnl_warn_nonsevere = check_journal_errors()
 
-    # ---- 3. 构建精简通知: 运动一下 -- 错误X个 警告X个 -- 名言 ----
+    # ---- 3. 构建精简通知: 运动一下 -- 错误X个 -- 警告X个 -- 名言 ----
     parts = ["🏃 运动一下"]
 
     if jnl_err > 0:
         parts.append(f"🔴 错误{jnl_err}个")
-    if jnl_warn > 0:
-        parts.append(f"⚠️ 警告{jnl_warn}个")
+
+    # 严重来源警告: 无论数量多少都提示
+    if jnl_warn_severe > 0:
+        parts.append(f"⚠️ 严重警告{jnl_warn_severe}个")
+
+    # 非严重来源警告: 超过阈值才提示
+    if jnl_warn_nonsevere >= WARN_NONSEVERE_THRESHOLD:
+        parts.append(f"⚠️ 警告{jnl_warn_nonsevere}个")
 
     # CPU/内存/磁盘异常时追加告警标记
     has_resource_issue = False
@@ -381,13 +407,16 @@ def run_reminder_cycle():
 
     body = " — ".join(parts)
 
-    # 异常时提升 urgency
-    has_issue = has_resource_issue or jnl_err > 0 or jnl_warn > 20
+    # 异常时提升 urgency: 有效警告数 = 严重警告 + 超阈值非严重警告
+    effective_warns = jnl_warn_severe + (
+        jnl_warn_nonsevere if jnl_warn_nonsevere >= WARN_NONSEVERE_THRESHOLD else 0
+    )
+    has_issue = has_resource_issue or jnl_err > 0 or effective_warns > 20
     urgency = "critical" if has_issue else "normal"
 
     notify_send("健康提醒", body, urgency=urgency, timeout=NOTIFY_TIMEOUT)
 
-    # 日志记录详细信息
+    # 日志记录详细信息 (含被忽略的非严重警告)
     status_parts = []
     if cpu_pct is not None:
         status_parts.append(f"CPU:{cpu_pct}%")
@@ -395,8 +424,13 @@ def run_reminder_cycle():
         status_parts.append(f"MEM:{mem_pct}%")
     if disk_part:
         status_parts.append(f"DISK({disk_part}):{disk_pct}%")
-    if jnl_total > 0:
-        status_parts.append(f"LOG:E{jnl_err}/W{jnl_warn}")
+    log_detail = f"LOG:E{jnl_err}"
+    if jnl_warn_severe > 0:
+        log_detail += f"/WS{jnl_warn_severe}"
+    if jnl_warn_nonsevere > 0:
+        log_detail += f"/WN{jnl_warn_nonsevere}"
+    if jnl_err + jnl_warn_severe + jnl_warn_nonsevere > 0:
+        status_parts.append(log_detail)
     logging.info(f"提醒周期完成 | {' '.join(status_parts)}")
 
 
@@ -507,7 +541,7 @@ def test_mode():
     cpu = get_cpu_percent()
     mem = get_memory_percent()
     disk = get_disk_usage()
-    jerr, jwarn, jtot = check_journal_errors()
+    jerr, jwarn_severe, jwarn_nonsevere = check_journal_errors()
 
     print(f"  CPU:    {cpu}%" if cpu is not None else "  CPU:    N/A")
     print(f"  内存:   {mem}%" if mem is not None else "  内存:   N/A")
@@ -515,8 +549,11 @@ def test_mode():
         print(f"  磁盘:   {disk[0]} = {disk[1]}%")
     else:
         print("  磁盘:   N/A")
-    if jtot > 0:
-        print(f"  日志:   {jerr} 错误, {jwarn} 警告 (近1小时, 系统级)")
+    if jerr > 0 or jwarn_severe > 0 or jwarn_nonsevere > 0:
+        print(f"  日志:   {jerr} 错误, {jwarn_severe} 严重警告, "
+              f"{jwarn_nonsevere} 一般警告 (近1小时, 系统级)")
+        if jwarn_nonsevere > 0 and jwarn_nonsevere < WARN_NONSEVERE_THRESHOLD:
+            print(f"          ({jwarn_nonsevere} 条一般警告未达 {WARN_NONSEVERE_THRESHOLD} 阈值, 通知中忽略)")
     else:
         print("  日志:   无警告/错误 ✅")
 
