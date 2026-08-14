@@ -47,6 +47,11 @@ WARN_SEVERE_SOURCES = {
 }
 WARN_NONSEVERE_THRESHOLD = 100  # 非严重警告超过此数量才提示 (条/小时)
 
+# X 服务器日志噪音过滤: gdm-x-session 把信息级 (II) 消息也按 warning
+# 优先级写入 journal, 造成每小时数百条假警告. 对这些来源只统计带
+# (WW) 警告 / (EE) 错误标记的消息
+X_NOISE_FILTER_SOURCES = {"/usr/libexec/gdm-x-session"}
+
 QUOTES_API       = "https://v1.hitokoto.cn/"   # 一言 API (月度追加用)
 QUOTES_TIMEOUT   = 8        # API 请求超时 (秒)
 MONTHLY_ADD_COUNT = 100     # 每月追加名言数量
@@ -315,6 +320,8 @@ def check_journal_errors() -> tuple[int, int, int]:
     警告按来源 (SYSLOG_IDENTIFIER) 分级:
       - 严重来源: 内核/systemd/硬件/安全等, 无论数量都提示
       - 非严重来源: GNOME/应用等, 超过阈值才提示
+      - X 服务器来源 (X_NOISE_FILTER_SOURCES): 只统计 (WW)/(EE) 标记的消息,
+        (II) 信息级消息属噪音, 忽略
     返回: (错误数, 严重警告数, 非严重警告数)
     """
     err_count, warn_severe, warn_nonsevere = 0, 0, 0
@@ -335,12 +342,17 @@ def check_journal_errors() -> tuple[int, int, int]:
                     continue
                 try:
                     entry = json.loads(line)
+                    source = entry.get("SYSLOG_IDENTIFIER", "")
+                    # X 服务器噪音过滤: 只统计带 (WW)/(EE) 标记的消息
+                    if source in X_NOISE_FILTER_SOURCES:
+                        msg = entry.get("MESSAGE", "")
+                        if not (msg.startswith("(WW)") or msg.startswith("(EE)")):
+                            continue
                     priority = int(entry.get("PRIORITY", 4))
                     if priority <= 3:
                         err_count += 1
                     else:
                         # PRIORITY 4: 按来源分级
-                        source = entry.get("SYSLOG_IDENTIFIER", "")
                         if source in WARN_SEVERE_SOURCES:
                             warn_severe += 1
                         else:

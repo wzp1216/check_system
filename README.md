@@ -110,6 +110,7 @@ systemctl --user disable wellness-reminder.service
 | `NOTIFY_TIMEOUT` | 20000ms | 通知停留时间 |
 | `WARN_SEVERE_SOURCES` | 见下方 | 严重警告来源列表 |
 | `WARN_NONSEVERE_THRESHOLD` | 100 | 非严重警告阈值（条/小时） |
+| `X_NOISE_FILTER_SOURCES` | gdm-x-session | X 服务器噪音来源列表（只统计 (WW)/(EE) 标记的消息） |
 
 ## 警告分级机制
 
@@ -134,6 +135,14 @@ WARN_SEVERE_SOURCES = {
 ### 非严重来源（阈值过滤）
 
 其他来源（GNOME、NetworkManager、snap、应用等）的警告只有 **超过 100 条/小时** 才会出现在通知中。低于阈值时仅记录到日志文件，不打扰用户。
+
+### X 服务器噪音过滤
+
+X 服务器（`gdm-x-session`）会把信息级 `(II)` 消息也按 warning 优先级写入 journal（如设备插拔、模块卸载等正常操作），每小时可产生数百条假警告。对此类来源只统计带 `(WW)` 警告 / `(EE)` 错误标记的消息，其余忽略：
+
+```python
+X_NOISE_FILTER_SOURCES = {"/usr/libexec/gdm-x-session"}
+```
 
 ### 通知展示规则
 
