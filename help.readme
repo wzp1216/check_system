@@ -1,0 +1,12 @@
+ 管理命令:
+    查看状态:  systemctl --user status wellness-reminder.service
+    查看日志:  journalctl --user -u wellness-reminder.service -f
+    停止服务:  systemctl --user stop wellness-reminder.service
+    重启服务:  systemctl --user restart wellness-reminder.service
+    手动测试:  python3 /home/wzp/.local/bin/wellness_reminder.py --test
+
+  应用日志:  ~/.cache/wellness-reminder.log
+  名言库:    /home/wzp/.config/wellness-reminder/quotes.txt (可直接编辑)
+  状态文件:  /home/wzp/.config/wellness-reminder/state.json
+
+
