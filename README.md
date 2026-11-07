@@ -7,7 +7,7 @@
 | 功能 | 说明 |
 |------|------|
 | 🏃 **运动提醒** | 每小时提醒站立活动（21:00–07:00 静默） |
-| 📖 **单词推送** | 附带一个随机英文单词（音标 + 词性释义），本地词库 |
+| 📖 **单词推送** | 附带一个随机英文单词（音标 + 词性释义），按艾宾浩斯遗忘曲线复习 |
 | 📊 **系统监控** | 检查 CPU / 内存 / 磁盘使用率 |
 | 📋 **日志告警** | 监控 journalctl 系统级警告/错误，智能过滤噪音 |
 | 🔔 **桌面通知** | 通过 `notify-send` 推送，异常时提升 urgency |
@@ -95,6 +95,7 @@ systemctl --user disable wellness-reminder.service
 | systemd 服务文件 | `~/.config/systemd/user/wellness-reminder.service` |
 | 应用运行日志 | `~/.cache/wellness-reminder.log` |
 | 英文单词库 | `~/.config/wellness-reminder/english_word.json` |
+| 复习状态 | `~/.config/wellness-reminder/state.json` |
 
 ## 配置说明
 
@@ -108,6 +109,7 @@ systemctl --user disable wellness-reminder.service
 | `NOTIFY_TIMEOUT` | 20000ms | 通知停留时间 |
 | `WARN_SEVERE_SOURCES` | 见下方 | 严重警告来源列表 |
 | `WARN_NONSEVERE_THRESHOLD` | 100 | 非严重警告阈值（条/小时） |
+| `EBBINGHAUS_INTERVALS_H` | [6, 24, 72, 168, 504] | 复习时间点（小时，从首次曝光起算） |
 | `X_NOISE_FILTER_SOURCES` | gdm-x-session | X 服务器噪音来源列表（只统计 (WW)/(EE) 标记的消息） |
 
 ## 警告分级机制
@@ -160,13 +162,20 @@ X_NOISE_FILTER_SOURCES = {"/usr/libexec/gdm-x-session"}
 ```
 
 - 无异常时只显示：`🏃 运动一下 — 📖 cancel /ˈkæns(ə)l/ v. 取消（计划好的事情）`
+- 复习的单词在末尾追加 `🔄复习` 标记
 - 有异常时 urgency 自动提升为 `critical`
 
 ## 单词库
 
-单词库存放在 `~/.config/wellness-reminder/english_word.json`，共 3575 个常用单词，每个词条包含音标、词性、中文释义、例句、短语、词源故事等字段。每小时提醒时随机抽取一个，通知中显示 **单词 + 音标 + 第一条词性释义**。
+单词库存放在 `~/.config/wellness-reminder/english_word.json`，共 3575 个常用单词，每个词条包含音标、词性、中文释义、例句、短语、词源故事等字段。每小时提醒时选取一个，通知中显示 **单词 + 音标 + 第一条词性释义**。
 
 如需替换或扩展词库，用同样格式的 JSON 数组文件覆盖该路径即可（字段参考: `word` / `phonetic0` / `trans`）。
+
+### 艾宾浩斯复习机制
+
+每个单词首次出现后，在 **6 小时 / 1 天 / 3 天 / 7 天 / 21 天** 后各复习一次（从首次出现起算），之后视为已掌握、不再出现。复习与新词**每小时交替**：本轮优先推与上一轮不同种类的单词，优先池无可用时退回另一池。复习的单词在通知中带 `🔄复习` 标记。
+
+复习进度记录在 `~/.config/wellness-reminder/state.json`。调整复习时间点可修改脚本顶部的 `EBBINGHAUS_INTERVALS_H`（单位：小时）。
 
 ## 静默时段
 

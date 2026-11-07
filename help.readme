@@ -7,5 +7,6 @@
 
   应用日志:  ~/.cache/wellness-reminder.log
   单词库:    /home/wzp/.config/wellness-reminder/english_word.json
+  复习状态:  /home/wzp/.config/wellness-reminder/state.json
 
 

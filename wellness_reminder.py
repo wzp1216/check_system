@@ -6,7 +6,7 @@ Ubuntu 健康提醒 & 系统监控服务
   1. 启动后每隔一小时提醒: 站立走动 + 英文单词 (一个, 含音标与释义)
   2. 系统健康检查: CPU / 内存 / 磁盘使用率 + journalctl 警告/错误
   3. 通过 systemd 用户服务管理, 开机自启
-  4. 单词库本地化: 随安装包提供, 随机抽取
+  4. 单词复习: 按艾宾浩斯遗忘曲线 (6h/1d/3d/7d/21d) 重复, 复习与新词交替
 
 使用:
   手动测试:  python3 wellness_reminder.py --test
@@ -22,7 +22,7 @@ import sys
 import signal
 import logging
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 # ============================================================
@@ -50,12 +50,16 @@ WARN_NONSEVERE_THRESHOLD = 100  # 非严重警告超过此数量才提示 (条/�
 # (WW) 警告 / (EE) 错误标记的消息
 X_NOISE_FILTER_SOURCES = {"/usr/libexec/gdm-x-session"}
 
+# 艾宾浩斯遗忘曲线: 单词首次曝光后, 在这些时间点各复习一次 (小时)
+EBBINGHAUS_INTERVALS_H = [6, 24, 72, 168, 504]  # 6小时 / 1天 / 3天 / 7天 / 21天
+
 NOTIFY_TIMEOUT   = 20000    # 提醒通知停留 (ms)
 NOTIFY_APP_NAME  = "健康提醒"
 
 LOG_FILE = os.path.expanduser("~/.cache/wellness-reminder.log")
 CONFIG_DIR = os.path.expanduser("~/.config/wellness-reminder")
 WORD_FILE = os.path.join(CONFIG_DIR, "english_word.json")  # 英文单词库
+STATE_FILE = os.path.join(CONFIG_DIR, "state.json")        # 单词复习状态
 
 # ============================================================
 # 日志
@@ -120,10 +124,10 @@ def is_quiet_hours():
 
 
 # ============================================================
-# 英文单词
+# 英文单词 (艾宾浩斯遗忘曲线复习)
 # ============================================================
-def get_random_word() -> str | None:
-    """从单词库随机选取一个单词, 返回 "📖 单词 /音标/ 词性 释义" 字符串."""
+def load_word_library() -> list | None:
+    """读取单词库 (JSON 数组). 文件缺失或损坏时返回 None."""
     try:
         with open(WORD_FILE, "r") as f:
             data = json.load(f)
@@ -136,8 +140,50 @@ def get_random_word() -> str | None:
     if not data:
         logging.warning("单词库为空")
         return None
+    return data
 
-    w = random.choice(data)
+
+def load_word_state() -> dict:
+    """读取复习状态, 清理格式非法的词条.
+
+    词条格式: {"first": 首次曝光时间(ISO), "shown": 已显示次数(1-6, 6=已毕业)}
+    返回 {"words": {...}, "next_kind": "new"|"review"}
+    """
+    try:
+        with open(STATE_FILE, "r") as f:
+            state = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        state = {}
+    if not isinstance(state, dict):
+        state = {}
+
+    valid = {}
+    for w, s in state.get("words", {}).items():
+        if not isinstance(s, dict):
+            continue
+        try:
+            datetime.fromisoformat(s["first"])
+            shown = int(s.get("shown", 1))
+            if 1 <= shown <= 6:
+                valid[w] = {"first": s["first"], "shown": shown}
+        except (KeyError, ValueError, TypeError):
+            continue
+
+    next_kind = state.get("next_kind")
+    if next_kind not in ("new", "review"):
+        next_kind = "new"
+    return {"words": valid, "next_kind": next_kind}
+
+
+def save_word_state(state: dict):
+    """保存复习状态到 state.json."""
+    Path(CONFIG_DIR).mkdir(parents=True, exist_ok=True)
+    with open(STATE_FILE, "w") as f:
+        json.dump(state, f, ensure_ascii=False, indent=2)
+
+
+def format_word(w: dict) -> str:
+    """格式化为 "📖 单词 /音标/ 词性 释义" 字符串."""
     word = (w.get("word") or "").strip()
     phonetic = (w.get("phonetic0") or w.get("phonetic1") or "").strip()
     trans = w.get("trans") or []
@@ -154,6 +200,71 @@ def get_random_word() -> str | None:
     if meaning:
         parts.append(meaning)
     return " ".join(parts)
+
+
+def pick_next_word(data: list, state: dict) -> tuple[str, str] | None:
+    """
+    选取下一个要显示的单词 (复习与新词轮流交替).
+
+    规则:
+      - next_kind 决定本轮优先复习还是新词; 优先池无可用时退回另一池
+      - 复习池: shown<6 且当前时间 >= first + EBBINGHAUS_INTERVALS_H[shown-1]
+      - 新词池: 词库中尚未进入计划的单词
+      - 两池皆空: 取未毕业单词中最近到期的提前复习; 全部毕业则重新循环词库
+    选中后更新状态并保存, 返回 (格式化文本, 种类) 或 None.
+    """
+    now = datetime.now()
+    words_state = state["words"]
+    by_word = {w.get("word"): w for w in data if w.get("word")}
+
+    def due_time(s):
+        return datetime.fromisoformat(s["first"]) + timedelta(
+            hours=EBBINGHAUS_INTERVALS_H[s["shown"] - 1])
+
+    due = [by_word[w] for w, s in words_state.items()
+           if w in by_word and s["shown"] < 6 and now >= due_time(s)]
+    new_pool = [w for w in data if w.get("word") not in words_state]
+
+    chosen, kind = None, ""
+    if state["next_kind"] == "review":
+        if due:
+            chosen, kind = random.choice(due), "review"
+        elif new_pool:
+            chosen, kind = random.choice(new_pool), "new"
+    else:
+        if new_pool:
+            chosen, kind = random.choice(new_pool), "new"
+        elif due:
+            chosen, kind = random.choice(due), "review"
+
+    if chosen is None:
+        # 两池皆空: 取最近到期的未毕业单词提前复习
+        pending = sorted(
+            (by_word[w] for w, s in words_state.items()
+             if w in by_word and s["shown"] < 6),
+            key=lambda w: due_time(words_state[w["word"]]))
+        if pending:
+            chosen, kind = pending[0], "review"
+        elif data:
+            # 全部毕业: 重新循环整个词库 (按新词处理, 重置计划)
+            chosen, kind = random.choice(data), "new"
+
+    if chosen is None:
+        return None
+
+    word = chosen["word"]
+    if kind == "new":
+        words_state[word] = {"first": now.isoformat(timespec="seconds"),
+                             "shown": 1}
+    else:
+        words_state[word]["shown"] += 1
+    state["next_kind"] = "new" if kind == "review" else "review"
+    save_word_state(state)
+
+    text = format_word(chosen)
+    if kind == "review":
+        text += " 🔄复习"
+    return text, kind
 
 
 # ============================================================
@@ -297,8 +408,9 @@ def run_reminder_cycle():
         logging.warning("桌面会话不可用, 跳过本轮提醒")
         return
 
-    # ---- 1. 从单词库随机取一个英文单词 ----
-    word = get_random_word()
+    # ---- 1. 选取下一个单词 (艾宾浩斯复习与新词交替) ----
+    picked = pick_next_word(load_word_library() or [], load_word_state())
+    word, word_kind = picked if picked else (None, "none")
 
     # ---- 2. 系统健康检查 ----
     cpu_pct = get_cpu_percent()
@@ -361,6 +473,8 @@ def run_reminder_cycle():
         log_detail += f"/WN{jnl_warn_nonsevere}"
     if jnl_err + jnl_warn_severe + jnl_warn_nonsevere > 0:
         status_parts.append(log_detail)
+    if word:
+        status_parts.append(f"WORD[{word_kind}]:{word}")
     logging.info(f"提醒周期完成 | {' '.join(status_parts)}")
 
 
@@ -447,19 +561,30 @@ def test_mode():
     # 确保配置目录存在
     Path(CONFIG_DIR).mkdir(parents=True, exist_ok=True)
 
-    # 如果单词库不存在，提示先运行 install.sh
-    if not os.path.exists(WORD_FILE):
-        print(f"\n⚠️  单词库文件不存在: {WORD_FILE}")
+    data = load_word_library()
+    state = load_word_state()
+
+    if data is None:
+        print(f"\n⚠️  单词库文件不存在或损坏: {WORD_FILE}")
         print(f"   请先运行 install.sh 安装\n")
     else:
-        with open(WORD_FILE, "r") as f:
-            count = len(json.load(f))
-        print(f"📖 单词库共有 {count} 个单词")
+        n_words = len(state["words"])
+        n_done = sum(1 for s in state["words"].values() if s["shown"] >= 6)
+        now = datetime.now()
+        n_due = sum(
+            1 for s in state["words"].values()
+            if s["shown"] < 6
+            and now >= datetime.fromisoformat(s["first"])
+            + timedelta(hours=EBBINGHAUS_INTERVALS_H[s["shown"] - 1]))
+        n_new = len(data) - n_words
+        print(f"\n📖 单词库: 共 {len(data)} 词 | 计划中 {n_words - n_done} | "
+              f"已毕业 {n_done} | 到期复习 {n_due} | 待学新词 {n_new}")
 
-    print("\n📖 随机选取单词:")
-    word = get_random_word()
-    if word:
-        print(f"  {word}")
+    print("\n📖 本轮选取单词:")
+    picked = pick_next_word(data or [], state)
+    if picked:
+        word_text, word_kind = picked
+        print(f"  [{word_kind}] {word_text}")
     else:
         print("  (无)")
 
