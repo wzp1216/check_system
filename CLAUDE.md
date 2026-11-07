@@ -1,22 +1,22 @@
 # check_system_onehour — Ubuntu 健康提醒与系统监控服务
 
 > **角色模板（必读）**：开始任何任务前，先阅读并遵循
-> `/home/wzp/claudewzp/.claude/prompts/A-coding.md`
+> `/media/data/claudewzp/.claude/prompts/A-coding.md`
 > 中的角色定义、领域专长、工作方式与质量标准。本文件仅补充本项目特有信息；两者冲突时以模板为准。
 
 ## 项目概述
 
-Ubuntu 桌面系统用户服务，每小时提醒站立走动并推送一条随机名言，同时监控系统健康状态（CPU/内存/磁盘使用率 + journalctl 错误/警告日志分级过滤）。通过 systemd 用户服务 (`wellness-reminder.service`) 管理，开机自启。
+Ubuntu 桌面系统用户服务，每小时提醒站立走动并推送一个随机英文单词（音标+词性释义），同时监控系统健康状态（CPU/内存/磁盘使用率 + journalctl 错误/警告日志分级过滤）。通过 systemd 用户服务 (`wellness-reminder.service`) 管理，开机自启。
 
 ## 关键文件与目录
 
 | 路径 | 作用 |
 |------|------|
 | `wellness_reminder.py` | 主程序（含所有逻辑），顶部为配置常量区 |
-| `wellness_reminder_quotes.txt` | 本地名言库（用户可手动编辑，每月自动追加） |
+| `english_word.json` | 英文单词库（音标/词性/释义/词源，安装时部署到 `~/.config`） |
 | `install.sh` | 安装脚本（复制到 `~/.local/bin`、启用 systemd 用户服务） |
 | `uninstall.sh` | 卸载脚本（停止服务、删除文件） |
-| `README.md` | 完整使用说明（211行） |
+| `README.md` | 完整使用说明（210行） |
 | `help.readme` | 简明帮助文本 |
 
 ## 常用命令
@@ -49,6 +49,6 @@ bash uninstall.sh
 
 - 调整监控告警阈值（修改文件顶部常量）
 - 新增/修改日志过滤规则（严重来源列表、非严重阈值）
-- 修改提醒内容或频率（名言库、静默时段、提醒间隔）
+- 修改提醒内容或频率（单词库、静默时段、提醒间隔）
 - 调试 systemd 服务（journalctl 日志分析、--test 测试模式）
-- 扩展名言来源或追加逻辑
+- 扩展或替换单词库（覆盖 `english_word.json`）

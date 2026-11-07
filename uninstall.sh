@@ -51,10 +51,10 @@ if [ -f "${HOME}/.cache/wellness-reminder.log" ]; then
     echo "  ✅ 日志已清理"
 fi
 
-# --- 清理配置目录 (含用户编辑的名言库) ---
+# --- 清理配置目录 (含单词库) ---
 if [ -d "${CONFIG_DIR}" ]; then
     echo ""
-    read -r -p "是否删除名言库及配置目录 (${CONFIG_DIR})? 包含你的名言编辑 [y/N] " answer
+    read -r -p "是否删除单词库及配置目录 (${CONFIG_DIR})? [y/N] " answer
     if [[ "${answer,,}" == "y" ]]; then
         rm -rfv "${CONFIG_DIR}"
         echo "  ✅ 配置目录已删除"

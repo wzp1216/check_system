@@ -6,7 +6,7 @@
 set -euo pipefail
 
 SCRIPT_NAME="wellness_reminder.py"
-QUOTES_NAME="wellness_reminder_quotes.txt"
+WORD_NAME="english_word.json"
 SERVICE_NAME="wellness-reminder.service"
 
 # 路径
@@ -49,19 +49,13 @@ cp -v "${SCRIPT_DIR}/${SCRIPT_NAME}" "${BIN_DIR}/${SCRIPT_NAME}"
 chmod +x "${BIN_DIR}/${SCRIPT_NAME}"
 echo "  ✅ 脚本已安装到 ${BIN_DIR}/${SCRIPT_NAME}"
 
-# --- 安装名言库 ---
+# --- 安装英文单词库 ---
 echo ""
-echo ">> 安装名言库..."
+echo ">> 安装英文单词库..."
 
 mkdir -p "${CONFIG_DIR}"
-
-if [ -f "${CONFIG_DIR}/quotes.txt" ]; then
-    echo "  ℹ️  名言文件已存在，保留用户编辑 (不覆盖)"
-else
-    cp -v "${SCRIPT_DIR}/${QUOTES_NAME}" "${CONFIG_DIR}/quotes.txt"
-    echo "  ✅ 名言库已安装: ${CONFIG_DIR}/quotes.txt"
-    echo "     你可以直接编辑该文件，删除不喜欢的行即可"
-fi
+cp -v "${SCRIPT_DIR}/${WORD_NAME}" "${CONFIG_DIR}/${WORD_NAME}"
+echo "  ✅ 单词库已安装: ${CONFIG_DIR}/${WORD_NAME}"
 
 # --- 创建 systemd 用户服务 ---
 echo ""
@@ -128,6 +122,5 @@ echo "    重启服务:  systemctl --user restart ${SERVICE_NAME}"
 echo "    手动测试:  python3 ${BIN_DIR}/${SCRIPT_NAME} --test"
 echo ""
 echo "  应用日志:  ~/.cache/wellness-reminder.log"
-echo "  名言库:    ${CONFIG_DIR}/quotes.txt (可直接编辑)"
-echo "  状态文件:  ${CONFIG_DIR}/state.json"
+echo "  单词库:    ${CONFIG_DIR}/english_word.json"
 echo ""

@@ -7,7 +7,7 @@
 | 功能 | 说明 |
 |------|------|
 | 🏃 **运动提醒** | 每小时提醒站立活动（21:00–07:00 静默） |
-| 📜 **名言推送** | 附带一条随机名言，本地库管理 |
+| 📖 **单词推送** | 附带一个随机英文单词（音标 + 词性释义），本地词库 |
 | 📊 **系统监控** | 检查 CPU / 内存 / 磁盘使用率 |
 | 📋 **日志告警** | 监控 journalctl 系统级警告/错误，智能过滤噪音 |
 | 🔔 **桌面通知** | 通过 `notify-send` 推送，异常时提升 urgency |
@@ -33,7 +33,7 @@ bash install.sh
 安装脚本会自动：
 - 安装依赖 (`libnotify-bin`)
 - 复制 Python 脚本到 `~/.local/bin/`
-- 安装名言库到 `~/.config/wellness-reminder/quotes.txt`
+- 安装英文单词库到 `~/.config/wellness-reminder/english_word.json`
 - 创建并启用 systemd 用户服务
 - 配置 `linger` 实现开机自启
 
@@ -52,10 +52,10 @@ python3 ~/.local/bin/wellness_reminder.py --test
   Wellness Reminder — 测试模式
 =======================================================
 ✅ 桌面会话可用
-📜 名言库共有 500 条名言
+📖 单词库共有 3575 个单词
 
-📜 随机选取名言:
-  "学而不思则罔，思而不学则殆" — 孔子
+📖 随机选取单词:
+  📖 cancel /ˈkæns(ə)l/ v. 取消（计划好的事情）；终止，废除，…
 
 📊 系统状态检查:
   CPU:    12.5%
@@ -94,9 +94,7 @@ systemctl --user disable wellness-reminder.service
 | Python 脚本 | `~/.local/bin/wellness_reminder.py` |
 | systemd 服务文件 | `~/.config/systemd/user/wellness-reminder.service` |
 | 应用运行日志 | `~/.cache/wellness-reminder.log` |
-| 名言库（可直接编辑）| `~/.config/wellness-reminder/quotes.txt` |
-| 名言储备池 | `~/.config/wellness-reminder/quotes_reserve.txt` |
-| 状态文件 | `~/.config/wellness-reminder/state.json` |
+| 英文单词库 | `~/.config/wellness-reminder/english_word.json` |
 
 ## 配置说明
 
@@ -158,25 +156,17 @@ X_NOISE_FILTER_SOURCES = {"/usr/libexec/gdm-x-session"}
 通知标题固定为「健康提醒」，正文格式：
 
 ```
-🏃 运动一下 — 🔴 错误2个 — ⚠️ 严重警告1个 — ⚠️ 警告150个 — 🔴 资源异常 — 📜 "名言内容" — 作者
+🏃 运动一下 — 🔴 错误2个 — ⚠️ 严重警告1个 — ⚠️ 警告150个 — 🔴 资源异常 — 📖 cancel /ˈkæns(ə)l/ v. 取消（计划好的事情）
 ```
 
-- 无异常时只显示：`🏃 运动一下 — 📜 名言`
+- 无异常时只显示：`🏃 运动一下 — 📖 cancel /ˈkæns(ə)l/ v. 取消（计划好的事情）`
 - 有异常时 urgency 自动提升为 `critical`
 
-## 名言库管理
+## 单词库
 
-### 查看/编辑
+单词库存放在 `~/.config/wellness-reminder/english_word.json`，共 3575 个常用单词，每个词条包含音标、词性、中文释义、例句、短语、词源故事等字段。每小时提醒时随机抽取一个，通知中显示 **单词 + 音标 + 第一条词性释义**。
 
-直接编辑 `~/.config/wellness-reminder/quotes.txt`，每行一条名言。删除不喜欢的行即可。
-
-### 每月自动追加
-
-每月自动从「一言 API」拉取 100 条新名言追加到库中。如果 API 拉取不足 50 条，会从储备池 (`quotes_reserve.txt`) 补充。
-
-### 储备池
-
-`quotes_reserve.txt` 是预置的备用名言池，首次安装时随 `quotes.txt` 一起提供。
+如需替换或扩展词库，用同样格式的 JSON 数组文件覆盖该路径即可（字段参考: `word` / `phonetic0` / `trans`）。
 
 ## 静默时段
 
@@ -192,7 +182,7 @@ bash uninstall.sh
 - 停止并禁用 systemd 服务
 - 删除 Python 脚本
 - 清理应用日志
-- 询问是否删除名言库和配置目录（保留你的编辑）
+- 询问是否删除单词库和配置目录
 - 询问是否禁用 linger
 
 ## 调试
@@ -213,7 +203,7 @@ python3 ~/.local/bin/wellness_reminder.py --test
 ```
 check_system/
 ├── wellness_reminder.py          # 主程序
-├── wellness_reminder_quotes.txt  # 名言储备池（安装时复制到 ~/.config）
+├── english_word.json             # 英文单词库（安装时复制到 ~/.config）
 ├── install.sh                    # 安装脚本
 ├── uninstall.sh                  # 卸载脚本
 └── README.md                     # 本文件

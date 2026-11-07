@@ -6,7 +6,6 @@
     手动测试:  python3 /home/wzp/.local/bin/wellness_reminder.py --test
 
   应用日志:  ~/.cache/wellness-reminder.log
-  名言库:    /home/wzp/.config/wellness-reminder/quotes.txt (可直接编辑)
-  状态文件:  /home/wzp/.config/wellness-reminder/state.json
+  单词库:    /home/wzp/.config/wellness-reminder/english_word.json
 
 

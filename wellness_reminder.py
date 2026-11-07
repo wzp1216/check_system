@@ -3,10 +3,10 @@
 Ubuntu 健康提醒 & 系统监控服务
 ================================
 功能:
-  1. 启动后每隔一小时提醒: 站立走动 + 本地名言 (一条)
+  1. 启动后每隔一小时提醒: 站立走动 + 英文单词 (一个, 含音标与释义)
   2. 系统健康检查: CPU / 内存 / 磁盘使用率 + journalctl 警告/错误
   3. 通过 systemd 用户服务管理, 开机自启
-  4. 名言本地化管理: 用户可编辑, 每月自动追加
+  4. 单词库本地化: 随安装包提供, 随机抽取
 
 使用:
   手动测试:  python3 wellness_reminder.py --test
@@ -17,8 +17,6 @@ Ubuntu 健康提醒 & 系统监控服务
 import subprocess
 import time
 import json
-import urllib.request
-import urllib.error
 import os
 import sys
 import signal
@@ -52,18 +50,12 @@ WARN_NONSEVERE_THRESHOLD = 100  # 非严重警告超过此数量才提示 (条/�
 # (WW) 警告 / (EE) 错误标记的消息
 X_NOISE_FILTER_SOURCES = {"/usr/libexec/gdm-x-session"}
 
-QUOTES_API       = "https://v1.hitokoto.cn/"   # 一言 API (月度追加用)
-QUOTES_TIMEOUT   = 8        # API 请求超时 (秒)
-MONTHLY_ADD_COUNT = 100     # 每月追加名言数量
-
 NOTIFY_TIMEOUT   = 20000    # 提醒通知停留 (ms)
 NOTIFY_APP_NAME  = "健康提醒"
 
 LOG_FILE = os.path.expanduser("~/.cache/wellness-reminder.log")
 CONFIG_DIR = os.path.expanduser("~/.config/wellness-reminder")
-QUOTES_FILE = os.path.join(CONFIG_DIR, "quotes.txt")
-RESERVE_FILE = os.path.join(CONFIG_DIR, "quotes_reserve.txt")
-STATE_FILE = os.path.join(CONFIG_DIR, "state.json")
+WORD_FILE = os.path.join(CONFIG_DIR, "english_word.json")  # 英文单词库
 
 # ============================================================
 # 日志
@@ -128,114 +120,40 @@ def is_quiet_hours():
 
 
 # ============================================================
-# 本地名言管理
+# 英文单词
 # ============================================================
-def get_random_quote() -> str | None:
-    """从本地名言文件随机选取一条."""
+def get_random_word() -> str | None:
+    """从单词库随机选取一个单词, 返回 "📖 单词 /音标/ 词性 释义" 字符串."""
     try:
-        with open(QUOTES_FILE, "r") as f:
-            lines = [l.strip() for l in f if l.strip()]
-        if not lines:
-            logging.warning("名言文件为空")
-            return None
-        return random.choice(lines)
+        with open(WORD_FILE, "r") as f:
+            data = json.load(f)
     except FileNotFoundError:
-        logging.warning(f"名言文件不存在: {QUOTES_FILE}")
+        logging.warning(f"单词库文件不存在: {WORD_FILE}")
+        return None
+    except (json.JSONDecodeError, OSError) as e:
+        logging.warning(f"单词库读取失败: {e}")
+        return None
+    if not data:
+        logging.warning("单词库为空")
         return None
 
-
-def fetch_one_quote_from_api(category: str = "") -> str | None:
-    """从一言 API 获取一条名言. 返回格式化的字符串."""
-    url = QUOTES_API
-    if category:
-        url += f"?c={category}"
-    try:
-        req = urllib.request.Request(url)
-        req.add_header("User-Agent", "WellnessReminder/1.0")
-        with urllib.request.urlopen(req, timeout=QUOTES_TIMEOUT) as resp:
-            data = json.loads(resp.read().decode())
-            content = data.get("hitokoto", "").strip()
-            author  = data.get("from_who") or data.get("from", "") or "佚名"
-            if content:
-                return f'"{content}" — {author.strip()}'
-    except Exception:
-        pass
-    return None
-
-
-def fetch_quotes_batch(count: int) -> list[str]:
-    """从一言 API 批量拉取名言的去重列表."""
-    categories = ["d", "k", "c", "i", "a", "b"]
-    quotes = []
-    seen = set()
-    max_attempts = count * 3
-    attempts = 0
-
-    while len(quotes) < count and attempts < max_attempts:
-        cat = categories[attempts % len(categories)]
-        q = fetch_one_quote_from_api(cat)
-        if q and q not in seen:
-            seen.add(q)
-            quotes.append(q)
-        attempts += 1
-        time.sleep(0.3)
-
-    logging.info(f"API 拉取: {len(quotes)}/{count} 条名言 ({attempts} 次请求)")
-    return quotes
-
-
-def fetch_from_reserve(count: int) -> list[str]:
-    """从储备池取名言 (不足则返回实际数量)."""
-    try:
-        with open(RESERVE_FILE, "r") as f:
-            lines = [l.strip() for l in f if l.strip()]
-        if len(lines) <= count:
-            result = lines[:]
-        else:
-            result = random.sample(lines, count)
-        logging.info(f"储备池取出: {len(result)} 条名言")
-        return result
-    except FileNotFoundError:
-        logging.warning(f"储备池文件不存在: {RESERVE_FILE}")
-        return []
-
-
-def maybe_add_monthly_quotes():
-    """如果距上次追加超过30天，尝试追加 100 条名言."""
-    Path(CONFIG_DIR).mkdir(parents=True, exist_ok=True)
-
-    # 读取上次追加月份
-    try:
-        with open(STATE_FILE, "r") as f:
-            state = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        state = {"last_add_month": ""}
-
-    current_month = datetime.now().strftime("%Y-%m")
-    if state.get("last_add_month") == current_month:
-        return  # 本月已追加
-
-    logging.info(f"本月 ({current_month}) 尚未追加名言，开始获取...")
-
-    # 优先从 API 拉取
-    new_quotes = fetch_quotes_batch(MONTHLY_ADD_COUNT)
-
-    # 不足 50 条则从储备池补充
-    if len(new_quotes) < 50:
-        logging.warning(f"API 仅获取 {len(new_quotes)} 条，从储备池补充")
-        reserve_quotes = fetch_from_reserve(MONTHLY_ADD_COUNT - len(new_quotes))
-        new_quotes.extend(reserve_quotes)
-
-    if new_quotes:
-        with open(QUOTES_FILE, "a") as f:
-            for q in new_quotes:
-                f.write(q + "\n")
-        state["last_add_month"] = current_month
-        with open(STATE_FILE, "w") as f:
-            json.dump(state, f)
-        logging.info(f"本月已追加 {len(new_quotes)} 条名言到 {QUOTES_FILE}")
+    w = random.choice(data)
+    word = (w.get("word") or "").strip()
+    phonetic = (w.get("phonetic0") or w.get("phonetic1") or "").strip()
+    trans = w.get("trans") or []
+    if trans:
+        pos = (trans[0].get("pos") or "").strip()
+        cn = (trans[0].get("cn") or "").strip()
+        meaning = f"{pos} {cn}".strip()
     else:
-        logging.warning("未能获取任何新名言，跳过本月追加")
+        meaning = ""
+
+    parts = ["📖", word]
+    if phonetic:
+        parts.append(f"/{phonetic}/")
+    if meaning:
+        parts.append(meaning)
+    return " ".join(parts)
 
 
 # ============================================================
@@ -374,13 +292,13 @@ def check_journal_errors() -> tuple[int, int, int]:
 # 核心逻辑: 一轮提醒
 # ============================================================
 def run_reminder_cycle():
-    """执行一次提醒周期: 运动提醒 + 健康检查 + 名言."""
+    """执行一次提醒周期: 运动提醒 + 健康检查 + 英文单词."""
     if not is_session_available():
         logging.warning("桌面会话不可用, 跳过本轮提醒")
         return
 
-    # ---- 1. 从本地文件获取一条名言 ----
-    quote = get_random_quote()
+    # ---- 1. 从单词库随机取一个英文单词 ----
+    word = get_random_word()
 
     # ---- 2. 系统健康检查 ----
     cpu_pct = get_cpu_percent()
@@ -389,7 +307,7 @@ def run_reminder_cycle():
     disk_part, disk_pct = disk_info if disk_info else ("", 0.0)
     jnl_err, jnl_warn_severe, jnl_warn_nonsevere = check_journal_errors()
 
-    # ---- 3. 构建精简通知: 运动一下 -- 错误X个 -- 警告X个 -- 名言 ----
+    # ---- 3. 构建精简通知: 运动一下 -- 错误X个 -- 警告X个 -- 英文单词 ----
     parts = ["🏃 运动一下"]
 
     if jnl_err > 0:
@@ -414,8 +332,8 @@ def run_reminder_cycle():
     if has_resource_issue:
         parts.append("🔴 资源异常")
 
-    if quote:
-        parts.append(f"📜 {quote}")
+    if word:
+        parts.append(word)
 
     body = " — ".join(parts)
 
@@ -484,9 +402,6 @@ def main():
 
     while running:
         try:
-            # 每月检查名言追加
-            maybe_add_monthly_quotes()
-
             # 分段休眠 3600 秒以响应退出信号
             remaining = 3600
             while remaining > 0 and running:
@@ -532,20 +447,19 @@ def test_mode():
     # 确保配置目录存在
     Path(CONFIG_DIR).mkdir(parents=True, exist_ok=True)
 
-    # 如果名言文件不存在，提示从安装目录复制
-    if not os.path.exists(QUOTES_FILE):
-        print(f"\n⚠️  名言文件不存在: {QUOTES_FILE}")
-        print(f"   请先运行 install.sh 安装，或手动创建该文件")
-        print(f"   将使用内置回退逻辑继续测试...\n")
+    # 如果单词库不存在，提示先运行 install.sh
+    if not os.path.exists(WORD_FILE):
+        print(f"\n⚠️  单词库文件不存在: {WORD_FILE}")
+        print(f"   请先运行 install.sh 安装\n")
     else:
-        with open(QUOTES_FILE, "r") as f:
-            count = sum(1 for l in f if l.strip())
-        print(f"📜 名言库共有 {count} 条名言")
+        with open(WORD_FILE, "r") as f:
+            count = len(json.load(f))
+        print(f"📖 单词库共有 {count} 个单词")
 
-    print("\n📜 随机选取名言:")
-    quote = get_random_quote()
-    if quote:
-        print(f"  {quote}")
+    print("\n📖 随机选取单词:")
+    word = get_random_word()
+    if word:
+        print(f"  {word}")
     else:
         print("  (无)")
 
